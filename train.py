@@ -412,7 +412,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
             y_loss[phase].append(epoch_loss)
             y_err[phase].append(1.0-epoch_acc)            
             # deep copy the model
-            if phase == 'val' and epoch%10 == 9:
+            if phase == 'val':
                 last_model_wts = model.state_dict()
                 if len(opt.gpu_ids)>1:
                     save_network(model.module, epoch+1)
